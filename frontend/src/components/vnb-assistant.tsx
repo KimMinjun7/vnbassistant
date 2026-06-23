@@ -1000,7 +1000,7 @@ const quarterlyTrend: Record<string, { q: string; settlement: number; forecast: 
   "전체": [
     { q: "2025Q1", settlement: 458, forecast: 471 },
     { q: "2025Q2", settlement: 481, forecast: 493 },
-    { q: "2025Q3", settlement: 502, settlement: 502, forecast: 514 },
+    { q: "2025Q3", settlement: 502, forecast: 514 },
     { q: "2025Q4", settlement: 516, forecast: 528 },
     { q: "2026Q1", settlement: 527, forecast: 539 },
     { q: "2026Q2", settlement: null as unknown as number, forecast: 547 },
