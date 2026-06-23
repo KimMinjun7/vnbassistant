@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "OneShinhan";
+  src: url("/fonts/OneShinhanLight.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "OneShinhan";
+  src: url("/fonts/OneShinhanMedium.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "OneShinhan";
+  src: url("/fonts/OneShinhanMedium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "OneShinhan";
+  src: url("/fonts/OneShinhanBold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: "OneShinhan", "Noto Sans KR", sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  /* 신한라이프 브랜드 컬러 기반 — Shinhan Blue #003DA5 (HSL 218 100% 32%) */
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 220 25% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 25% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 25% 12%;
+    --primary: 218 100% 32%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 218 40% 95%;
+    --secondary-foreground: 218 100% 32%;
+    --muted: 220 20% 96%;
+    --muted-foreground: 220 15% 48%;
+    --accent: 218 40% 92%;
+    --accent-foreground: 218 100% 32%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 20% 88%;
+    --input: 220 20% 88%;
+    --ring: 218 100% 32%;
+    --chart-1: 218 100% 32%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+    --sidebar-background: 218 50% 97%;
+    --sidebar-foreground: 220 25% 20%;
+    --sidebar-primary: 218 100% 32%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 218 40% 92%;
+    --sidebar-accent-foreground: 218 100% 32%;
+    --sidebar-border: 220 20% 88%;
+    --sidebar-ring: 218 100% 32%;
+  }
+  .dark {
+    --background: 220 30% 8%;
+    --foreground: 218 30% 95%;
+    --card: 220 25% 11%;
+    --card-foreground: 218 30% 95%;
+    --popover: 220 25% 11%;
+    --popover-foreground: 218 30% 95%;
+    --primary: 218 90% 55%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 20% 18%;
+    --secondary-foreground: 218 30% 90%;
+    --muted: 220 20% 16%;
+    --muted-foreground: 220 15% 60%;
+    --accent: 220 20% 18%;
+    --accent-foreground: 218 30% 90%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 20% 18%;
+    --input: 220 20% 18%;
+    --ring: 218 90% 55%;
+    --chart-1: 218 90% 60%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --sidebar-background: 220 30% 10%;
+    --sidebar-foreground: 218 30% 90%;
+    --sidebar-primary: 218 90% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 20% 16%;
+    --sidebar-accent-foreground: 218 30% 90%;
+    --sidebar-border: 220 20% 16%;
+    --sidebar-ring: 218 90% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
