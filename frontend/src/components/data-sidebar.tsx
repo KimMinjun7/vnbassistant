@@ -15,6 +15,7 @@ import {
   Plus,
   BarChart3,
   BarChart2,
+  Activity,
   Wand2,
   History,
   Package,
@@ -69,7 +70,7 @@ const getCategoryTree = (savedProducts: any[]): TreeNode[] => {
         { id: "prediction-db", name: "예측용 DB",         type: "dashboard", icon: "flask" },
         { id: "result-db",     name: "예측결과 저장 DB",  type: "dashboard", icon: "save" },
         { id: "model-dev",     name: "예측모델 개발",     type: "dashboard", icon: "brain" },
-        { id: "simulation",    name: "시뮬레이션 및 집계", type: "dashboard", icon: "chart" },
+        { id: "simulation",    name: "시뮬레이션 및 집계", type: "dashboard", icon: "activity" },
         { id: "vnb-dashboard", name: "대시보드",           type: "dashboard", icon: "chart" },
         { id: "output",        name: "출력",               type: "dashboard", icon: "download" },
       ],
@@ -120,6 +121,7 @@ function getNodeIcon(node: TreeNode, isExpanded?: boolean) {
     if (node.icon === "flask")    return <FlaskConical className="h-4 w-4 text-primary" />
     if (node.icon === "save")     return <Save className="h-4 w-4 text-primary" />
     if (node.icon === "brain")    return <Brain className="h-4 w-4 text-primary" />
+    if (node.icon === "activity") return <Activity className="h-4 w-4 text-primary" />
     if (node.icon === "chart")    return <BarChart2 className="h-4 w-4 text-primary" />
     if (node.icon === "download") return <Download className="h-4 w-4 text-primary" />
     return <BarChart3 className="h-4 w-4 text-muted-foreground" />
