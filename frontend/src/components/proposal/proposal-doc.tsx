@@ -204,7 +204,7 @@ export function ProposalDoc() {
           pageLabel="화면 백업"
           title="VNB Assistant · 학습용 DB 화면"
           caption="설명변수 408개·누적 410만건 학습 데이터, 내부시스템 연계(정기배치/실시간)와 적재 현황을 실제 화면으로 확인합니다."
-          src="/proposal-screens/training-db.png"
+          src={`${import.meta.env.BASE_URL}proposal-screens/training-db.png`}
           alt="VNB Assistant 학습용 DB 탭 화면 - 설명변수 통계와 DB 적재 현황"
           highlights={[
             "상단 KPI: 설명변수 총계(408개)·학습 데이터(410만건)·연계 시스템(6개)·생성 HW 가동률(78%)",
@@ -221,7 +221,7 @@ export function ProposalDoc() {
           pageLabel="화면 백업"
           title="VNB Assistant · 예측 시뮬레이션(예측용/결과저장 DB) 화면"
           caption="가입조건 입력으로 MP DB를 생성해 실시간 예측하고, 예측 결과를 결과저장 DB(이력)로 적재하는 화면입니다."
-          src="/proposal-screens/simulation.png"
+          src={`${import.meta.env.BASE_URL}proposal-screens/simulation.png`}
           alt="VNB Assistant 예측 시뮬레이션 탭 - 가입조건 입력과 예측결과 저장 이력"
           highlights={[
             "가입조건 입력(상품·연령·성별·채널·금액)으로 가입가능 범위의 MP DB 자동 생성",
@@ -238,7 +238,7 @@ export function ProposalDoc() {
           pageLabel="화면 백업"
           title="VNB Assistant · 예측모델 개발 화면"
           caption="증번/보종 단위 예측모델의 알고리즘·정확도(R²)·운영상태·재학습 트리거를 관리하는 화면입니다."
-          src="/proposal-screens/model-dev.png"
+          src={`${import.meta.env.BASE_URL}proposal-screens/model-dev.png`}
           alt="VNB Assistant 예측모델 개발 탭 - 모델 목록과 성능 지표"
           highlights={[
             "상단 KPI: 운영 모델(4개)·평균 정확도(97.6%)·실시간 모니터링·주간 재학습 트리거",
@@ -256,7 +256,7 @@ export function ProposalDoc() {
           pageLabel="화면 백업"
           title="VNB Assistant · 집계 대시보드 화면"
           caption="보종단위 결산 vs 예측 비교, 채널×보종 히트맵, 변경분석(What-if)을 제공하는 집계 대시보드입니다."
-          src="/proposal-screens/dashboard.png"
+          src={`${import.meta.env.BASE_URL}proposal-screens/dashboard.png`}
           alt="VNB Assistant 집계 대시보드 탭 - 결산 vs 예측 비교 차트와 히트맵"
           highlights={[
             "VNB 결산 vs 예측 비교: 보종단위 막대 차트로 정합성 직관 확인",
@@ -272,7 +272,7 @@ export function ProposalDoc() {
           pageLabel="화면 백업"
           title="VNB Assistant · 결과 출력 화면"
           caption="집계 단위·출력 형식을 선택해 예측·집계 결과를 파일로 내보내고, 결산 대비 차이·정확도를 미리보기로 확인합니다."
-          src="/proposal-screens/output.png"
+          src={`${import.meta.env.BASE_URL}proposal-screens/output.png`}
           alt="VNB Assistant 결과 출력 탭 - 파일 다운로드 옵션과 출력 미리보기"
           highlights={[
             "집계 단위(보종단위 등)·출력 형식(Excel 등) 선택 후 결과 파일 다운로드",

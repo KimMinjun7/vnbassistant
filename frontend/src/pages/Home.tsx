@@ -189,7 +189,7 @@ export default function Home() {
       <div className="h-screen flex flex-col bg-background">
         <header className="h-14 bg-card border-b border-border flex items-center px-6 justify-between">
           <div className="flex items-center gap-3">
-            <img src="/신한라이프 로고 국문 상하.png" alt="신한라이프" className="h-10" />
+            <img src={`${import.meta.env.BASE_URL}신한라이프 로고 국문 상하.png`} alt="신한라이프" className="h-10" />
             <div className="h-6 w-px bg-border" />
             <div className="flex items-center gap-2">
               <span className="font-bold text-foreground text-lg">DARK Factory</span>

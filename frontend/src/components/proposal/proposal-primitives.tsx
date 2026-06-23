@@ -231,7 +231,7 @@ export function ScreenshotBackup({
         {/* screenshot */}
         <figure className="overflow-hidden rounded-lg border border-border bg-secondary">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={src || "/placeholder.svg"} alt={alt} className="w-full" />
+          <img src={src || `${import.meta.env.BASE_URL}placeholder.svg`} alt={alt} className="w-full" />
         </figure>
 
         {/* 화면 설명 highlights */}
