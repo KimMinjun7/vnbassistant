@@ -145,7 +145,10 @@ interface TreeItemProps {
 }
 
 function TreeItem({ node, level, onSelect, selectedId, onDuplicate }: TreeItemProps) {
-  const [isExpanded, setIsExpanded] = useState(node.type === "category" || node.type === "ai-design-category")
+  const [isExpanded, setIsExpanded] = useState(
+    (node.type === "category" && node.id !== "tools-category" && node.id !== "saved-products-category")
+    || node.type === "ai-design-category"
+  )
   const hasChildren = node.children && node.children.length > 0
 
   const handleClick = () => {
