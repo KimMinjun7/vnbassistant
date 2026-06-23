@@ -55,17 +55,19 @@ DARK Factory VNB Assistant는 보험 상품개발팀이 VNB 예측 모델을 학
 | Vite | 6 |
 | Tailwind CSS | 3 |
 | shadcn/ui | — |
-| Recharts | 2.15 |
+| Recharts | 3.9 |
 | react-router-dom | 7 |
+| react-day-picker | 10 |
+| date-fns | 4.4 |
 
 ### 백엔드
 
 | 항목 | 버전 |
 |------|------|
 | Python | 3.11+ |
-| FastAPI | 0.115 |
-| Uvicorn | 0.32 |
-| Pydantic | 2.10 |
+| FastAPI | 0.138 |
+| Uvicorn | 0.49 |
+| Pydantic | 2.13 |
 
 ---
 
