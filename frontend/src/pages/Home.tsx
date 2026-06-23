@@ -87,7 +87,7 @@ export default function Home() {
   const [activeTabId, setActiveTabId] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(false)
   const [sidebarOpen, setSidebarOpen] = useState(true)
-  const [rightPanelOpen, setRightPanelOpen] = useState(true)
+  const [rightPanelOpen, setRightPanelOpen] = useState(false)
 
   const handleNodeSelect = (node: { id: string; name: string; type: string }) => {
     setSelectedNode(node)
