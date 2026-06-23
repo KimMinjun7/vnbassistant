@@ -137,9 +137,9 @@ function StepCard({
   onNavigate: (id: string) => void
 }) {
   return (
-    <div className="relative">
+    <div className="relative h-full">
       <Card
-        className={`border-2 transition-all hover:scale-[1.02] cursor-pointer ${step.bgColor} ${step.borderColor} hover:shadow-lg ${compact ? "p-3" : "p-4"}`}
+        className={`h-full flex flex-col border-2 transition-all hover:scale-[1.02] cursor-pointer ${step.bgColor} ${step.borderColor} hover:shadow-lg ${compact ? "p-3" : "p-4"}`}
         onClick={() => onNavigate(step.id)}
       >
         <div className={`flex items-start justify-between ${compact ? "mb-2" : "mb-3"}`}>
@@ -151,11 +151,11 @@ function StepCard({
           </span>
         </div>
         <h3 className={`font-semibold text-foreground ${compact ? "text-xs mb-0.5" : "text-sm mb-1"}`}>{step.title}</h3>
-        <p className={`text-muted-foreground leading-relaxed ${compact ? "text-[11px] mb-2" : "text-xs mb-3"}`}>{step.description}</p>
+        <p className={`flex-1 text-muted-foreground leading-relaxed ${compact ? "text-[11px] mb-2" : "text-xs mb-3"}`}>{step.description}</p>
         <Button
           variant="ghost"
           size="sm"
-          className="w-full justify-between group hover:bg-transparent p-0 h-auto"
+          className="w-full justify-between group hover:bg-transparent p-0 h-auto mt-auto"
           onClick={(e) => { e.stopPropagation(); onNavigate(step.id) }}
         >
           <span className="text-xs">열기</span>
