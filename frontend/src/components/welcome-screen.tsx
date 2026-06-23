@@ -1,4 +1,3 @@
-
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import {
@@ -8,6 +7,7 @@ import {
   FlaskConical,
   Save,
   Brain,
+  Activity,
   BarChart2,
   Download,
   Wand2,
@@ -19,7 +19,7 @@ interface WelcomeScreenProps {
   onNavigate: (dashboardId: string) => void
 }
 
-const VNB_STEPS = [
+const VNB_STEPS_ROW1 = [
   {
     id: "training-db",
     step: "Step 1",
@@ -60,11 +60,24 @@ const VNB_STEPS = [
     bgColor: "bg-purple-500/10",
     borderColor: "border-purple-500/30",
   },
+]
+
+const VNB_STEPS_ROW2 = [
+  {
+    id: "simulation",
+    step: "Step 5",
+    title: "시뮬레이션 및 집계",
+    description: "집계 단위별 VNB 조회, 가입조건 시뮬레이션, 변경 영향 분석",
+    icon: Activity,
+    color: "text-amber-500",
+    bgColor: "bg-amber-500/10",
+    borderColor: "border-amber-500/30",
+  },
   {
     id: "vnb-dashboard",
-    step: "Step 5",
+    step: "Step 6",
     title: "대시보드",
-    description: "예측 결과 집계 및 VNB 현황 시각화",
+    description: "결산 DB vs 예측 모델 트렌드, 히트맵, 조건별 집계 비교",
     icon: BarChart2,
     color: "text-orange-500",
     bgColor: "bg-orange-500/10",
@@ -72,9 +85,9 @@ const VNB_STEPS = [
   },
   {
     id: "output",
-    step: "Step 6",
+    step: "Step 7",
     title: "출력",
-    description: "분석 결과 보고서 출력 및 다운로드",
+    description: "분석 결과 보고서 Excel·PDF 출력 및 다운로드",
     icon: Download,
     color: "text-rose-500",
     bgColor: "bg-rose-500/10",
@@ -106,17 +119,64 @@ const OTHER_TOOLS = [
     title: "상품 목록",
     description: "저장된 상품 목록 조회 및 비교 분석",
     icon: Package,
-    color: "text-amber-500",
-    bgColor: "bg-amber-500/10",
-    borderColor: "border-amber-500/30",
+    color: "text-slate-500",
+    bgColor: "bg-slate-500/10",
+    borderColor: "border-slate-500/30",
   },
 ]
+
+function StepCard({
+  step,
+  compact = false,
+  showArrow = false,
+  onNavigate,
+}: {
+  step: (typeof VNB_STEPS_ROW1)[number]
+  compact?: boolean
+  showArrow?: boolean
+  onNavigate: (id: string) => void
+}) {
+  return (
+    <div className="relative">
+      <Card
+        className={`border-2 transition-all hover:scale-[1.02] cursor-pointer ${step.bgColor} ${step.borderColor} hover:shadow-lg ${compact ? "p-3" : "p-4"}`}
+        onClick={() => onNavigate(step.id)}
+      >
+        <div className={`flex items-start justify-between ${compact ? "mb-2" : "mb-3"}`}>
+          <div className={`p-1.5 rounded-lg ${step.bgColor}`}>
+            <step.icon className={`${compact ? "h-4 w-4" : "h-5 w-5"} ${step.color}`} />
+          </div>
+          <span className={`text-xs font-semibold px-2 py-0.5 rounded ${step.color} ${step.bgColor}`}>
+            {step.step}
+          </span>
+        </div>
+        <h3 className={`font-semibold text-foreground ${compact ? "text-xs mb-0.5" : "text-sm mb-1"}`}>{step.title}</h3>
+        <p className={`text-muted-foreground leading-relaxed ${compact ? "text-[11px] mb-2" : "text-xs mb-3"}`}>{step.description}</p>
+        <Button
+          variant="ghost"
+          size="sm"
+          className="w-full justify-between group hover:bg-transparent p-0 h-auto"
+          onClick={(e) => { e.stopPropagation(); onNavigate(step.id) }}
+        >
+          <span className="text-xs">열기</span>
+          <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" />
+        </Button>
+      </Card>
+      {showArrow && (
+        <div className="absolute -right-3 top-1/2 -translate-y-1/2 z-10">
+          <ArrowRight className="h-5 w-5 text-muted-foreground/40" />
+        </div>
+      )}
+    </div>
+  )
+}
 
 export function WelcomeScreen({ onNavigate }: WelcomeScreenProps) {
   return (
     <div className="h-full flex flex-col items-center justify-start p-8 bg-background overflow-auto">
       <div className="max-w-5xl w-full space-y-8">
-        {/* Hero Section */}
+
+        {/* Hero */}
         <div className="text-center space-y-3">
           <div className="flex items-center justify-center gap-2 mb-2">
             <Sparkles className="h-8 w-8 text-primary" />
@@ -124,52 +184,39 @@ export function WelcomeScreen({ onNavigate }: WelcomeScreenProps) {
           </div>
           <p className="text-xl text-muted-foreground">AI 초자동화 플랫폼</p>
           <p className="text-sm text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            학습 데이터 구축부터 예측모델 개발·대시보드·출력까지 End-to-End 자동화
+            학습 데이터 구축부터 예측모델 개발·시뮬레이션·대시보드·출력까지 End-to-End 자동화
           </p>
         </div>
 
         {/* VNB Assistant Workflow */}
         <div>
-          <div className="flex items-center gap-2 mb-4">
+          <div className="flex items-center gap-2 mb-3">
             <Brain className="h-5 w-5 text-primary" />
             <h2 className="text-base font-semibold text-foreground">VNB Assistant 워크플로우</h2>
           </div>
-          <div className="grid grid-cols-3 gap-3">
-            {VNB_STEPS.map((step, idx) => (
-              <Card
+
+          {/* Row 1: Steps 1-4, compact */}
+          <div className="grid grid-cols-4 gap-3 mb-3">
+            {VNB_STEPS_ROW1.map((step, idx) => (
+              <StepCard
                 key={step.id}
-                className={`p-5 border-2 transition-all hover:scale-[1.02] cursor-pointer ${step.bgColor} ${step.borderColor} hover:shadow-lg relative`}
-                onClick={() => onNavigate(step.id)}
-              >
-                {/* Arrow connector (except last in row) */}
-                {idx % 3 !== 2 && (
-                  <div className="absolute -right-3 top-1/2 -translate-y-1/2 z-10">
-                    <ArrowRight className="h-5 w-5 text-muted-foreground/40" />
-                  </div>
-                )}
-                <div className="flex items-start justify-between mb-3">
-                  <div className={`p-2 rounded-lg ${step.bgColor}`}>
-                    <step.icon className={`h-5 w-5 ${step.color}`} />
-                  </div>
-                  <span className={`text-xs font-semibold px-2 py-1 rounded ${step.color} ${step.bgColor}`}>
-                    {step.step}
-                  </span>
-                </div>
-                <h3 className="text-sm font-semibold text-foreground mb-1">{step.title}</h3>
-                <p className="text-xs text-muted-foreground leading-relaxed mb-3">{step.description}</p>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="w-full justify-between group hover:bg-transparent p-0 h-auto"
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    onNavigate(step.id)
-                  }}
-                >
-                  <span className="text-xs">열기</span>
-                  <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </Card>
+                step={step}
+                compact
+                showArrow={idx < VNB_STEPS_ROW1.length - 1}
+                onNavigate={onNavigate}
+              />
+            ))}
+          </div>
+
+          {/* Row 2: Steps 5-7 */}
+          <div className="grid grid-cols-3 gap-3">
+            {VNB_STEPS_ROW2.map((step, idx) => (
+              <StepCard
+                key={step.id}
+                step={step}
+                showArrow={idx < VNB_STEPS_ROW2.length - 1}
+                onNavigate={onNavigate}
+              />
             ))}
           </div>
         </div>
@@ -184,7 +231,7 @@ export function WelcomeScreen({ onNavigate }: WelcomeScreenProps) {
             {OTHER_TOOLS.map((tool) => (
               <Card
                 key={tool.id}
-                className={`p-5 border-2 transition-all hover:scale-[1.02] cursor-pointer ${tool.bgColor} ${tool.borderColor} hover:shadow-lg`}
+                className={`p-4 border-2 transition-all hover:scale-[1.02] cursor-pointer ${tool.bgColor} ${tool.borderColor} hover:shadow-lg`}
                 onClick={() => onNavigate(tool.id)}
               >
                 <div className="flex items-start justify-between mb-3">
@@ -198,10 +245,7 @@ export function WelcomeScreen({ onNavigate }: WelcomeScreenProps) {
                   variant="ghost"
                   size="sm"
                   className="w-full justify-between group hover:bg-transparent p-0 h-auto"
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    onNavigate(tool.id)
-                  }}
+                  onClick={(e) => { e.stopPropagation(); onNavigate(tool.id) }}
                 >
                   <span className="text-xs">열기</span>
                   <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" />
@@ -214,7 +258,7 @@ export function WelcomeScreen({ onNavigate }: WelcomeScreenProps) {
         {/* Quick Stats */}
         <div className="grid grid-cols-3 gap-4">
           <Card className="p-4 bg-card border-border text-center">
-            <div className="text-2xl font-bold text-primary mb-1">6단계</div>
+            <div className="text-2xl font-bold text-primary mb-1">7단계</div>
             <div className="text-xs text-muted-foreground">자동화 파이프라인</div>
           </Card>
           <Card className="p-4 bg-card border-border text-center">
