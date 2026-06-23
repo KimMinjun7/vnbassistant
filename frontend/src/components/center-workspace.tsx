@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react"
-import { X, FileText, Code, Calculator, Download, Database, FlaskConical, Save, Brain, BarChart2, Wand2, BarChart3, Package, type LucideIcon } from "lucide-react"
+import { X, FileText, Code, Calculator, Download, Database, FlaskConical, Save, Brain, Activity, BarChart2, Wand2, BarChart3, Package, type LucideIcon } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -28,6 +28,7 @@ function getTabIcon(nodeId: string): LucideIcon {
   if (nodeId.startsWith("prediction-db")) return FlaskConical
   if (nodeId.startsWith("result-db"))    return Save
   if (nodeId.startsWith("model-dev"))    return Brain
+  if (nodeId === "simulation")           return Activity
   if (nodeId === "vnb-dashboard" || nodeId === "output-result" || nodeId === "dashboard") return BarChart2
   if (nodeId === "output")               return Download
   if (nodeId === "product-builder")      return Wand2
