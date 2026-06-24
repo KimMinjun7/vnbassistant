@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { Bot, X } from "lucide-react"
 import { DataSidebar } from "@/components/layout/data-sidebar"
 import { CenterWorkspace } from "@/components/layout/center-workspace"
 import { RightPanel } from "@/components/layout/right-panel"
@@ -87,7 +88,7 @@ export default function Home() {
   const [activeTabId, setActiveTabId] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(false)
   const [sidebarOpen, setSidebarOpen] = useState(true)
-  const [rightPanelOpen, setRightPanelOpen] = useState(false)
+  const [chatOpen, setChatOpen] = useState(false)
 
   const handleNodeSelect = (node: { id: string; name: string; type: string }) => {
     setSelectedNode(node)
@@ -226,17 +227,26 @@ export default function Home() {
             />
             </div>
           </div>
-          <div className={`flex-shrink-0 transition-all duration-300 overflow-hidden ${rightPanelOpen ? "w-80" : "w-14"} p-3 pl-0`}>
-            <div className="h-full rounded-xl overflow-hidden shadow-sm border border-border bg-card">
+          {/* 챗봇 패널 — 열리면 콘텐츠를 왼쪽으로 밀어냄 */}
+          <div className={`flex-shrink-0 transition-all duration-300 overflow-hidden ${chatOpen ? "w-80" : "w-0"}`}>
             <RightPanel
-              simulationResult={currentResult}
-              isLoading={isLoading}
+              isOpen={chatOpen}
+              onClose={() => setChatOpen(false)}
               currentDashboard={tabs.find((t) => t.id === activeTabId)?.nodeId}
-              isOpen={rightPanelOpen}
-              onToggle={() => setRightPanelOpen(!rightPanelOpen)}
             />
-            </div>
           </div>
+
+          {/* 플로팅 챗봇 버튼 — 패널이 열려있으면 숨김 */}
+          {!chatOpen && (
+            <button
+              onClick={() => setChatOpen(true)}
+              className="fixed bottom-6 right-6 z-50 rounded-full bg-primary text-primary-foreground shadow-lg hover:bg-primary/90 transition-all hover:scale-105 flex items-center justify-center"
+              style={{ width: 52, height: 52 }}
+              title="AI 어시스턴트"
+            >
+              <Bot className="h-5 w-5" />
+            </button>
+          )}
         </div>
       </div>
     </ProductProvider>

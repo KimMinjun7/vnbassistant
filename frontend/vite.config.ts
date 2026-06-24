@@ -9,10 +9,19 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [react()],
     base: env.VITE_BASE_PATH || "/",
+    define: {
+      "process.env.NODE_ENV": JSON.stringify(mode),
+    },
     resolve: {
       alias: {
         "@": path.resolve(__dirname, "./src"),
       },
+    },
+    optimizeDeps: {
+      include: [
+        "recharts", "lucide-react", "react", "react-dom",
+        "react-grid-layout", "react-draggable", "react-resizable",
+      ],
     },
     server: {
       port: 3000,

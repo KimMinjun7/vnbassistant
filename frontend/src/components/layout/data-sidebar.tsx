@@ -61,20 +61,20 @@ const getCategoryTree = (savedProducts: any[]): TreeNode[] => {
 
   return [
     {
-      id: "vnb-assistant-category",
-      name: "VNB Assistant",
+      id: "db-management",
+      name: "DB 관리",
       type: "category",
-      icon: "brain",
+      icon: "database",
       children: [
-        { id: "training-db",   name: "학습용 DB",        type: "dashboard", icon: "database" },
-        { id: "prediction-db", name: "예측용 DB",         type: "dashboard", icon: "flask" },
-        { id: "result-db",     name: "예측결과 저장 DB",  type: "dashboard", icon: "save" },
-        { id: "model-dev",     name: "예측모델 개발",     type: "dashboard", icon: "brain" },
-        { id: "simulation",    name: "시뮬레이션 및 집계", type: "dashboard", icon: "activity" },
-        { id: "vnb-dashboard", name: "대시보드",           type: "dashboard", icon: "chart" },
-        { id: "output",        name: "출력",               type: "dashboard", icon: "download" },
+        { id: "training-db",   name: "학습용 DB",        type: "dashboard", icon: "dot" },
+        { id: "prediction-db", name: "예측용 DB",         type: "dashboard", icon: "dot" },
+        { id: "result-db",     name: "예측결과 저장 DB",  type: "dashboard", icon: "dot" },
       ],
     },
+    { id: "model-dev",     name: "VNB예측모델 개발",   type: "dashboard", icon: "brain" },
+    { id: "simulation",    name: "시뮬레이션 및 집계", type: "dashboard", icon: "activity" },
+    { id: "vnb-dashboard", name: "대시보드",           type: "dashboard", icon: "chart" },
+    { id: "output",        name: "출력",               type: "dashboard", icon: "download" },
     {
       id: "tools-category",
       name: "기타 도구",
@@ -111,12 +111,14 @@ const getCategoryTree = (savedProducts: any[]): TreeNode[] => {
 
 function getNodeIcon(node: TreeNode, isExpanded?: boolean) {
   if (node.type === "category") {
-    if (node.icon === "wand")    return <Wand2 className="h-4 w-4 text-primary" />
-    if (node.icon === "history") return <History className="h-4 w-4 text-primary" />
-    if (node.icon === "brain")   return <Brain className="h-4 w-4 text-primary" />
+    if (node.icon === "wand")     return <Wand2 className="h-4 w-4 text-primary" />
+    if (node.icon === "history")  return <History className="h-4 w-4 text-primary" />
+    if (node.icon === "brain")    return <Brain className="h-4 w-4 text-primary" />
+    if (node.icon === "database") return <Database className="h-4 w-4 text-primary" />
     return <Folder className="h-4 w-4 text-primary" />
   }
   if (node.type === "dashboard") {
+    if (node.icon === "dot")      return <span className="w-4 flex items-center justify-center flex-shrink-0"><span className="w-1.5 h-1.5 rounded-full bg-muted-foreground/60 inline-block" /></span>
     if (node.icon === "database") return <Database className="h-4 w-4 text-primary" />
     if (node.icon === "flask")    return <FlaskConical className="h-4 w-4 text-primary" />
     if (node.icon === "save")     return <Save className="h-4 w-4 text-primary" />
@@ -145,10 +147,7 @@ interface TreeItemProps {
 }
 
 function TreeItem({ node, level, onSelect, selectedId, onDuplicate }: TreeItemProps) {
-  const [isExpanded, setIsExpanded] = useState(
-    (node.type === "category" && node.id !== "tools-category" && node.id !== "saved-products-category")
-    || node.type === "ai-design-category"
-  )
+  const [isExpanded, setIsExpanded] = useState(false)
   const hasChildren = node.children && node.children.length > 0
 
   const handleClick = () => {
@@ -282,7 +281,10 @@ export function DataSidebar({ onNodeSelect, onDocumentOpen, onToggle, isOpen }: 
       <div className="h-full flex flex-col bg-sidebar-background border-r border-sidebar-border overflow-hidden">
 
         {/* Toggle button */}
-        <div className={`flex items-center border-b border-sidebar-border flex-shrink-0 h-11 ${isOpen ? "justify-end px-2" : "justify-center"}`}>
+        <div className={`flex items-center border-b border-sidebar-border flex-shrink-0 h-11 ${isOpen ? "justify-between px-3" : "justify-center"}`}>
+          {isOpen && (
+            <span className="text-sm font-semibold text-foreground select-none">메뉴</span>
+          )}
           <Tooltip>
             <TooltipTrigger asChild>
               <button

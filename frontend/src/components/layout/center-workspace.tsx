@@ -171,9 +171,7 @@ export function CenterWorkspace({
       {/* Tab Bar */}
       <div className="flex border-b border-border bg-muted/50 min-h-[44px]">
         {tabs.length === 0 ? (
-          <div className="flex items-center px-4 py-2 text-sm text-muted-foreground">
-            VNB Assistant - VNB 예측·시뮬레이션·집계 서비스
-          </div>
+          <div />
         ) : (
           tabs.map((tab) => (
             <div
