@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
-import { DataSidebar } from "@/components/data-sidebar"
-import { CenterWorkspace } from "@/components/center-workspace"
-import { RightPanel } from "@/components/right-panel"
+import { DataSidebar } from "@/components/layout/data-sidebar"
+import { CenterWorkspace } from "@/components/layout/center-workspace"
+import { RightPanel } from "@/components/layout/right-panel"
 import { ProductProvider } from "@/contexts/product-context"
 
 interface SimulationResult {
