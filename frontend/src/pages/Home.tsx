@@ -192,8 +192,8 @@ export default function Home() {
             <img src={`${import.meta.env.BASE_URL}신한라이프 로고 국문 상하.png`} alt="신한라이프" className="h-10" />
             <div className="h-6 w-px bg-border" />
             <div className="flex items-center gap-2">
-              <span className="font-bold text-foreground text-lg">DARK Factory</span>
-              <span className="text-xs text-muted-foreground">AI 초자동화 플랫폼</span>
+              <span className="font-bold text-foreground text-lg">VNB Assistant</span>
+              <span className="text-xs text-muted-foreground">VNB 예측·시뮬레이션·집계 플랫폼</span>
             </div>
           </div>
           <div className="flex items-center gap-4">

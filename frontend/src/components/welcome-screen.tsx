@@ -180,9 +180,9 @@ export function WelcomeScreen({ onNavigate }: WelcomeScreenProps) {
         <div className="text-center space-y-3">
           <div className="flex items-center justify-center gap-2 mb-2">
             <Sparkles className="h-8 w-8 text-primary" />
-            <h1 className="text-4xl font-bold text-foreground">Dark Factory</h1>
+            <h1 className="text-4xl font-bold text-foreground">VNB Assistant</h1>
           </div>
-          <p className="text-xl text-muted-foreground">AI 초자동화 플랫폼</p>
+          <p className="text-xl text-muted-foreground">VNB 예측·시뮬레이션·집계 플랫폼</p>
           <p className="text-sm text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             학습 데이터 구축부터 예측모델 개발·시뮬레이션·대시보드·출력까지 End-to-End 자동화
           </p>

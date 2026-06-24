@@ -165,7 +165,7 @@ export function CenterWorkspace({
       <div className="flex border-b border-border bg-muted/50 min-h-[44px]">
         {tabs.length === 0 ? (
           <div className="flex items-center px-4 py-2 text-sm text-muted-foreground">
-            Dark Factory - AI 기반 초자동화 상품 개발 플랫폼
+            VNB Assistant - VNB 예측·시뮬레이션·집계 플랫폼
           </div>
         ) : (
           tabs.map((tab) => (
