@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { ReactGridLayout, WidthProvider } from "react-grid-layout/legacy"
-import type { Layout } from "react-grid-layout"
+import type { LayoutItem } from "react-grid-layout"
 import "react-grid-layout/css/styles.css"
 import "react-resizable/css/styles.css"
 
@@ -126,10 +126,10 @@ interface Widget {
   kind: "preset" | "chart"
   presetId?: PresetId
   chartConfig?: ChartConfig
-  layout: Omit<Layout, "i">
+  layout: Omit<LayoutItem, "i">
 }
 
-const PRESET_DEFAULTS: Record<PresetId, Omit<Layout, "i">> = {
+const PRESET_DEFAULTS: Record<PresetId, Omit<LayoutItem, "i">> = {
   "kpi":         { x:0, y:0,  w:12, h:2, minH:2 },
   "trend-line":  { x:0, y:2,  w:8,  h:5, minH:3 },
   "product-bar": { x:8, y:2,  w:4,  h:5, minH:3 },
@@ -475,7 +475,7 @@ export function AggregationTab() {
   const [gChannel, setGChannel] = useState("전체")
 
   const [widgets,  setWidgets]  = useState<Widget[]>(DEFAULT_WIDGETS)
-  const [layouts,  setLayouts]  = useState<Layout[]>(() =>
+  const [layouts,  setLayouts]  = useState<LayoutItem[]>(() =>
     DEFAULT_WIDGETS.map(w => ({ i: w.id, ...w.layout }))
   )
   const [showBuilder, setShowBuilder] = useState(false)
@@ -599,7 +599,7 @@ export function AggregationTab() {
           layout={layouts}
           cols={12}
           rowHeight={60}
-          onLayoutChange={(l) => setLayouts(l as Layout[])}
+          onLayoutChange={(l) => setLayouts(l as LayoutItem[])}
           margin={[12, 12]}
           containerPadding={[0, 0]}
           draggableHandle=".drag-handle"
