@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.env*.local
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# 미사용 파일 보관소
+**/old/
+
+# 개발 도구
+.git/
+*.md
