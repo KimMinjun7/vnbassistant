@@ -1,6 +1,6 @@
 # VNB Assistant
 
-> 신한라이프 보험 상품의 **VNB(Value of New Business) 예측·시뮬레이션·집계** AI 초자동화 플랫폼
+> 신한라이프 보험 상품의 **VNB(Value of New Business) 예측·시뮬레이션·집계** 서비스
 
 **라이브 데모**: https://KimMinjun7.github.io/vnbassistant/
 
