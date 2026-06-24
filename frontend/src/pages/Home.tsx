@@ -193,7 +193,7 @@ export default function Home() {
             <div className="h-6 w-px bg-border" />
             <div className="flex items-center gap-2">
               <span className="font-bold text-foreground text-lg">VNB Assistant</span>
-              <span className="text-xs text-muted-foreground">VNB 예측·시뮬레이션·집계 플랫폼</span>
+              <span className="text-xs text-muted-foreground">VNB 예측·시뮬레이션·집계 서비스</span>
             </div>
           </div>
           <div className="flex items-center gap-4">

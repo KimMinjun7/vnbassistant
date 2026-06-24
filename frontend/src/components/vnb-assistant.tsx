@@ -194,7 +194,7 @@ export function VnbAssistant() {
           </div>
           <div>
             <h2 className="text-lg font-bold text-foreground">VNB Assistant</h2>
-            <p className="text-xs text-muted-foreground">AI 기반 VNB 예측 모델 학습·시뮬레이션·집계 플랫폼</p>
+            <p className="text-xs text-muted-foreground">AI 기반 VNB 예측 모델 학습·시뮬레이션·집계 서비스</p>
           </div>
         </div>
       </div>
